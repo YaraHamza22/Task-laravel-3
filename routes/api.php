@@ -12,10 +12,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::prefix('posts')->group(function() {
-    Route::get('/index',[PostController::class,'index']);
-    Route::post('/store',[PostController::class,'store']);
-    Route::get('/show/{id}',[PostController::class,'show']);
-    Route::put('/update/{id}',[PostController::class,'update']);
-    Route::delete('/delete/{id}',[PostController::class,'delete']);
-});
+Route::apiResource('posts', PostController::class);
